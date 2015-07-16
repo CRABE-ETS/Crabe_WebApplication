@@ -1,0 +1,4 @@
+curl http://localhost:9000/api/v1/ products -H “content-type:application/json” -H “x-access-token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0Mzc0Mjk4ODYwMjF9.543PsJUBzANx6ADrOayqqHdCyTGOptyE6237gZY1waA” -H “x-key:arvind@myapp.com”
+
+curl http://localhost:9000/api/v1/products -H 'Content-type: application/json' -H 'x-access-token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0Mzc0NDg0OTYyNDN9.gZgpPHcR7yG_1o8_kUiIAytLgChaZeZu8jNee8rLsXU' -H 'x-key:arvind@myapp.com'
+curl -H "content-type:application/json" -H "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0Mzc0NDg0OTYyNDN9.gZgpPHcR7yG_1o8_kUiIAytLgChaZeZu8jNee8rLsXU" -H "x-key:arvind@myapp.com" http://localhost:9000/api/v1/admin/users
