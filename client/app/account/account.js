@@ -4,12 +4,13 @@ angular.module('myAppApp')
   .config(function ($stateProvider,$httpProvider) {
       $httpProvider.interceptors.push('TokenInterceptor');
       $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl',
+      .state('account', {
+        url: '/account',
+        templateUrl: 'app/account/account.html',
+        controller: 'AccountCtrl',
         access: {
-            requiredLogin: false
+          requiredLogin: true,
+          requiredPermissions:['member','admin']
         }
       });
   });

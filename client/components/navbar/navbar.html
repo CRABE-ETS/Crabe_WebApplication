@@ -1,20 +1,22 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">my-app</a>
+<md-toolbar layout-align="center start" class='md-whiteframe-z3' ng-controller="NavbarCtrl">
+    <div class="md-toolbar-tools">
+        <a href="/"><h1>Crabe ETS</h1></a>
+        <span flex></span>
+        <span>
+<!--
+          <md-button ng-click="NavBar.showDialog($event)" ng-hide="{{NavBar.isConnected}}">Login</md-button>
+-->
+        <a ng-href="/login"  ng-hide="showMenu">Login</a>
+        <md-button ng-click="logout()" ng-show="showMenu">Logout</md-button>
+        </span>
     </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+    <md-tabs md-center-tabs="true" ng-show="showMenu">
+        <md-tab ng-repeat="item in menu"  data-ui-sref="{{item.link}}" md-active="$state.is('{{item.link}}')">
+            <md-tab-label>{{item.title}}</md-tab-label>
+        </md-tab>
+        <!--<md-tab id="tab2" aria-controls="tab2-content">Gestion des adhérents</md-tab>-->
+        <!--<md-tab id="tab3" aria-controls="tab3-content">Commandes</md-tab>-->
+        <!--<md-tab id="tab4" aria-controls="tab4-content">Mon Compte</md-tab>-->
+        <!--<md-tab id="tab5" aria-controls="tab4-content"><a href="javascript:" ng-click="logout()">Logout</a></md-tab>-->
+    </md-tabs>
+</md-toolbar>

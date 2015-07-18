@@ -4,9 +4,9 @@ angular.module('myAppApp')
   .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
+    /*$http.get('/api/v1/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
-    });
+    });*/
 
     $scope.addThing = function() {
       if($scope.newThing === '') {
