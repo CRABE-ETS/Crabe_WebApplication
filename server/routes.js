@@ -11,9 +11,11 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/v1/user', require('./api/user'));
+  app.use('/api/signUp', require('./api/signUp'));
+  app.use('/api/navigationBar', require('./api/navigationBar'));
   app.use('/api/login', require('./api/login'));
-  app.use('/api/v1/admin/users', require('./api/users'));
-  app.use('/api/v1/products', require('./api/products'));
+  app.use('/api/products', require('./api/products'));
   app.use('/api/v1/things', require('./api/thing'));
   
   

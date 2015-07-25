@@ -22,11 +22,11 @@ angular.module('myAppApp')
           delete AuthenticationFactory.user;
           delete AuthenticationFactory.userRole;
 
-          if($location.path()==="/")
+          if($location.path()==="/login")
           {
               $state.reload();
           }else{
-             $location.path("/");
+             $location.path("/login");
 
           }
 

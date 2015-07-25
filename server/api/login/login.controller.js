@@ -6,7 +6,10 @@ var userAuth = require('../../auth.js');
 
 // Deletes a login from the DB.
 exports.auth = function(req, res) {
-   res.json(userAuth.login(req,res));
+    userAuth.login(req,res,function(data){
+        res.json(data);
+    });
+
 };
 
 function handleError(res, err) {

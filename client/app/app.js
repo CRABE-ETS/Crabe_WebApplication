@@ -20,10 +20,7 @@ angular.module('myAppApp').run(function($rootScope, $state, $window, $location, 
     AuthenticationFactory.check();
 
     $rootScope.$on("$stateChangeStart", function(event, nextRoute, currentRoute) {
-//        if ((nextRoute.access && nextRoute.access.requiredLogin) && !AuthenticationFactory.isLogged) {
-//            $location.path("/login");
-//        }
-        debugger;
+
         if ((nextRoute.access && nextRoute.access.requiredLogin) && !AuthenticationFactory.isLogged) {
             $location.path("/login");
         }

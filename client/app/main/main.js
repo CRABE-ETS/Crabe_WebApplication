@@ -9,7 +9,7 @@ angular.module('myAppApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
         access: {
-            requiredLogin: false
+            requiredLogin: true
         }
       });
   });

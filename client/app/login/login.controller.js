@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('myAppApp')
-  .controller('LoginCtrl',['$scope', '$window', '$location', 'UserAuthFactory', 'AuthenticationFactory',
-        function($scope, $window, $location, UserAuthFactory, AuthenticationFactory){
+  .controller('LoginCtrl',['$scope', '$rootScope','$window', '$location', 'UserAuthFactory', 'AuthenticationFactory',
+        function($scope, $rootScope, $window, $location, UserAuthFactory, AuthenticationFactory){
 
         $scope.user = {
-            username: 'arvind@myApp.com',
-            password: 'pass123'
+            username: 'cesar.jeanroy@gmail.com',//arvind@myApp.com
+            password: 'qwerty'//pass123
         };
 
         $scope.login = function() {
@@ -18,12 +18,15 @@ angular.module('myAppApp')
                 UserAuthFactory.login(username, password).success(function (data) {
 
                     AuthenticationFactory.isLogged = true;
-                    AuthenticationFactory.user = data.user.username;
+                    AuthenticationFactory.user = data.user.email;
                     AuthenticationFactory.userRole = data.user.role;
+
 
                     $window.sessionStorage.token = data.token;
                     $window.sessionStorage.user = data.user.username; // to fetch the user details on refresh
                     $window.sessionStorage.userRole = data.user.role; // to fetch the user details on refresh
+
+                   /* $rootScope.$broadcast('fetchNavigationBar');*/
 
                     $location.path("/");
 

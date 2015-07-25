@@ -1,8 +1,8 @@
 var jwt = require('jwt-simple');
- 
+var User = require('./api/user/user.model');
 var auth = {
  
-  login: function(req, res) {
+  login: function(req, res,callback) {
  
     var username = req.body.username || '';
     var password = req.body.password || '';
@@ -13,40 +13,49 @@ var auth = {
         "status": 401,
         "message": "Invalid credentials"
       });
-      return;
+      callback();
     }
  
     // Fire a query to your DB and check if the credentials are valid
-    var dbUserObj = auth.validate(username, password);
-   
-    if (!dbUserObj) { // If authentication fails, we send a 401 back
-      res.status(401);
-      res.json({
-        "status": 401,
-        "message": "Invalid credentials"
-      });
-      return;
-    }
- 
-    if (dbUserObj) {
- 
-      // If authentication is success, we will generate a token
-      // and dispatch it to the client
- 
-      res.json(genToken(dbUserObj));
-    }
- 
+    auth.validate(username, password,function(err,dbUserObj){
+
+        if (!dbUserObj) { // If authentication fails, we send a 401 back
+          res.status(401);
+          res.json({
+            "status": 401,
+            "message": "Invalid credentials"
+          });
+          return;
+        }
+
+        if (dbUserObj) {
+
+          // If authentication is success, we will generate a token
+          // and dispatch it to the client
+
+          //res.json(genToken(dbUserObj));
+            callback(genToken(dbUserObj));
+        }
+    });
   },
  
-  validate: function(username, password) {
+  validate: function(username, password,callback) {
     // spoofing the DB response for simplicity
-    var dbUserObj = { // spoofing a userobject from the DB. 
+      /*var dbUserObj; = { // spoofing a userobject from the DB.
       name: 'arvind',
       role: 'admin',
       username: 'arvind@myapp.com'
-    };
- 
-    return dbUserObj;
+    };*/
+
+      User.findOne({email:username}, function (err, user) {
+          if(err) {
+              callback(err)
+          }
+          if(!user){ callback(null,null)
+              }
+          console.log(user);
+          callback(null,user);
+      });
   },
  
   validateUser: function(username) {
@@ -56,9 +65,9 @@ var auth = {
       role: 'admin',
       username: 'arvind@myapp.com'
     };
- 
+
     return dbUserObj;
-  },
+  }
 }
  
 // private method

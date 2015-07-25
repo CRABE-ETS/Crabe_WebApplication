@@ -1,7 +1,12 @@
 
-    <div class="loginForm" ng-controller="LoginCtrl" layout layout-align="center center" class=".md-whiteframe-z3">
-        <br/>
-        <md-content layout-padding class="autoScroll">
+    <div class="loginForm" ng-controller="LoginCtrl" layout="column" layout-align="center center">
+        <div flex="33" class="md-whiteframe-z3">
+        <md-toolbar class="md-succ">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Connexion</h2>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding class="bodyForm">
             <md-input-container >
                  <!--Use floating placeholder instead of label -->
                 <md-icon md-svg-src="bower_components/material-design-icons/content/svg/production/ic_mail_24px.svg" class="email"></md-icon>
@@ -13,6 +18,8 @@
                 <input ng-model="user.password" type="password" placeholder="Password (required)" ng-required="true">
             </md-input-container>
             <md-button ng-click="login()">Valider</md-button>
+            <md-button class="md-raised md-warn" ng-href="/signUp">s'inscrire</md-button>
         </md-content>
+        </div>
     </div>
 
