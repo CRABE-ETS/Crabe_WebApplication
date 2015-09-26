@@ -24,6 +24,7 @@ angular.module('myAppApp')
 
                     $window.sessionStorage.token = data.token;
                     $window.sessionStorage.user = data.user.username; // to fetch the user details on refresh
+                    $window.sessionStorage.userId = data.user._id;
                     $window.sessionStorage.userRole = data.user.role; // to fetch the user details on refresh
 
                    /* $rootScope.$broadcast('fetchNavigationBar');*/

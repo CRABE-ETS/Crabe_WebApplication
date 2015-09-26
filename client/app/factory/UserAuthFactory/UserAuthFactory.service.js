@@ -2,10 +2,10 @@
 //This factory is responsible for contacting the login endpoint and validating the user.
 //And also logging out the user
 angular.module('myAppApp')
-  .factory('UserAuthFactory', function ($window, $location, $http, $state, AuthenticationFactory) {
+  .factory('UserAuthFactory', function ($window, $location, $http, $state, AuthenticationFactory,$rootScope) {
     return {
       login: function(username, password) {
-        return $http.post('http://localhost:9000/api/login', {
+          return $http.post('http://localhost:9000/api/login', {
           username: username,
           password: password
         });
