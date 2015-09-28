@@ -13,8 +13,10 @@ angular.module('myAppApp')
 
         $http.post("/api/SignUp",$scope.user).success(function(){
             alert("inscription faite");
+          $location.path("/login");
+
         }).error(function(){
-            alert("C'est la merde mon pote !");
+            alert("Problème !!!");
         });
     }
 

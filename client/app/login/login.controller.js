@@ -5,8 +5,8 @@ angular.module('myAppApp')
         function($scope, $rootScope, $window, $location, UserAuthFactory, AuthenticationFactory){
 
         $scope.user = {
-            username: 'cesar.jeanroy@gmail.com',//arvind@myApp.com
-            password: 'qwerty'//pass123
+            username: 'cesar.jeanroy@gmail.com',//cesar.jeanroy@gmail.com
+            password: 'qwerty2'//qwerty
         };
 
         $scope.login = function() {
@@ -32,7 +32,7 @@ angular.module('myAppApp')
                     $location.path("/");
 
                 }).error(function (status) {
-                    alert('Oops something went wrong!');
+                    alert('Oops something went wrong!'+status.message);
                 });
             } else {
                 alert('Invalid credentials');
